@@ -10,6 +10,10 @@ from .my_generic import MyGenericRetrieveUpdateDestroyAPIView
 
 @api_view(http_method_names=['GET', 'POST'])
 def doctor_list_create_api_view(request):
+    """
+    Doctor List and Create View
+    :param limit: int
+    """
     if request.method == 'GET':
         doctors = Doctor.objects.all()
         serializer = DoctorSerializer(instance=doctors, many=True)
@@ -27,12 +31,19 @@ def doctor_list_create_api_view(request):
 
 
 class DoctorRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Doctor Retrieve, Update and Destroy View
+    """
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
 
 
 @api_view(http_method_names=['GET', 'POST'])
 def patient_list_create_api_view(request):
+    """
+    Patient List and Create View
+    :param limit: int
+    """
     if request.method == 'GET':
         patient = Patient.objects.all()
         serializer = PatientSerializer(instance=patient, many=True)
@@ -48,5 +59,8 @@ def patient_list_create_api_view(request):
 
 
 class PatientRetrieveUpdateDestroyAPIView(MyGenericRetrieveUpdateDestroyAPIView):
+    """
+    Patient Retrieve, Update and Destroy View
+    """
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
