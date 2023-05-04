@@ -19,7 +19,7 @@ schema_view = get_schema_view(
 )
 
 swagger_urlpatterns = [
-   path('swagger/', schema_view.with_ui('swagger', cache_timout=6000))
+   path('swagger/', schema_view.with_ui('swagger', cache_timeout=6000))
 ]
 
 urlpatterns = [
